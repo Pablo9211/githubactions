@@ -3,7 +3,7 @@ name: Test en develop
 on:
   push:
     branches:
-      - 'feature'  # Verifica que se activará en la rama feature
+      - 'feature/**'  # Asegúrate de que se activará en cualquier rama feature/xxx
 
 permissions:
   contents: write
@@ -46,13 +46,11 @@ jobs:
     steps:
       - name: checkoutrepositorio
         uses: actions/checkout@v2
-        with:
-          ref: main
 
       - name: Mezcla feature -> main
         uses: tukasz/direct-merge-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          source-branch: feature  # Asegúrate de especificar la rama de origen correcta
+          source-branch: ${{ github.ref_name }}
           target-branch: main
 
