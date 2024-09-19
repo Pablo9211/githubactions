@@ -3,7 +3,7 @@ name: Test en develop
 on:
   push:
     branches:
-      - 'feature/**'  # Asegúrate de que se activará en cualquier rama feature/xxx
+      - 'feature**'  # Asegúrate de que se activará en cualquier rama feature/xxx
 
 permissions:
   contents: write
