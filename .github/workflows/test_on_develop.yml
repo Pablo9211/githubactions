@@ -3,7 +3,7 @@ name: Test en develop
 on:
   push:
     branches:
-      - 'feature/**'
+      - 'feature' #- 'feature/**'
 
 permissions:
   contents: write
