@@ -2,8 +2,7 @@ name: Test en develop
 
 on:
   push:
-    branches:
-      - 'feature**'
+    branches: [ develop ]
 
 permissions:
   contents: write
@@ -11,12 +10,18 @@ permissions:
 
 jobs:
   test:
-    name: Test unitarios
-    if: ${{ contains(github.event.head_commit.message, 'Verde') }}
+    name: Creacion rama y Test unitarios
+    if: ${{ contains(github.event.head_commit.message, 'Entrega') }}
     runs-on: ubuntu-latest
     steps:
       - name: checkoutrepositorio
         uses: actions/checkout@v2
+
+      - name: Crear rama
+        run: |
+          git checkout develop
+          git checkout -b Release
+          git push -f -u origin Release
 
       - name: Configuracion entorno de python
         uses: actions/setup-python@v2
@@ -51,6 +56,5 @@ jobs:
         uses: tukasz/direct-merge-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          source-branch: ${{ github.ref_name }}
-          target-branch: develop
-
+          source-branch: Release
+          target-branch: main
