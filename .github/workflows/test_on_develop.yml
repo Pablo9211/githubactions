@@ -47,14 +47,14 @@ jobs:
       - name: checkoutrepositorio
         uses: actions/checkout@v2
         with:
-          ref: develop
+          ref: main
 
       - name: Mezcla feature -> develop
         uses: tukasz/direct-merge-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           source-branch: ${{ github.head_ref }}
-          target-branch: develop
+          target-branch: main
 
         
 
