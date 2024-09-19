@@ -46,6 +46,8 @@ jobs:
     steps:
       - name: checkoutrepositorio
         uses: actions/checkout@v2
+        with:
+          ref: develop
 
       - name: Mezcla feature -> develop
         uses: tukasz/direct-merge-action@master
