@@ -40,7 +40,7 @@ jobs:
     if: success()
     steps:
       - name: checkoutrepositorio
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Mezcla feature -> main
         uses: tukasz/direct-merge-action@master
